@@ -54,7 +54,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+#ifndef LWIP_SOCKET_STDINCLUDE
 /* If your port already typedef's sa_family_t, define SA_FAMILY_T_DEFINED
    to prevent this code from redefining it. */
 #if !defined(sa_family_t) && !defined(SA_FAMILY_T_DEFINED)
@@ -524,7 +524,7 @@ struct timeval {
   long    tv_usec;        /* and microseconds */
 };
 #endif /* LWIP_TIMEVAL_PRIVATE */
-
+#endif /* LWIP_SOCKET_STDINCLUDE */
 #define lwip_socket_init() /* Compatibility define, no init needed. */
 void lwip_socket_thread_init(void); /* LWIP_NETCONN_SEM_PER_THREAD==1: initialize thread-local semaphore */
 void lwip_socket_thread_cleanup(void); /* LWIP_NETCONN_SEM_PER_THREAD==1: destroy thread-local semaphore */

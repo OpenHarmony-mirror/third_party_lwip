@@ -48,9 +48,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+#ifndef LWIP_SOCKET_STDINCLUDE
 #define IF_NAMESIZE NETIF_NAMESIZE
-
+#endif /* LWIP_SOCKET_STDINCLUDE */
 char * lwip_if_indextoname(unsigned int ifindex, char *ifname);
 unsigned int lwip_if_nametoindex(const char *ifname);
 

@@ -81,10 +81,12 @@ struct ip_hdr {
   PACK_STRUCT_FIELD(u16_t _id);
   /* fragment offset field */
   PACK_STRUCT_FIELD(u16_t _offset);
+#ifndef LWIP_SOCKET_STDINCLUDE
 #define IP_RF 0x8000U        /* reserved fragment flag */
 #define IP_DF 0x4000U        /* don't fragment flag */
 #define IP_MF 0x2000U        /* more fragments flag */
 #define IP_OFFMASK 0x1fffU   /* mask for fragmenting bits */
+#endif /* LWIP_SOCKET_STDINCLUDE */
   /* time to live */
   PACK_STRUCT_FLD_8(u8_t _ttl);
   /* protocol*/

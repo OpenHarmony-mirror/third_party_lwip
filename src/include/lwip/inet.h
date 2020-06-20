@@ -48,7 +48,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+#ifndef LWIP_SOCKET_STDINCLUDE
 /* If your port already typedef's in_addr_t, define IN_ADDR_T_DEFINED
    to prevent this code from redefining it. */
 #if !defined(in_addr_t) && !defined(IN_ADDR_T_DEFINED)
@@ -129,7 +129,7 @@ extern const struct in6_addr in6addr_any;
 #define INET6_ADDRSTRLEN    IP6ADDR_STRLEN_MAX
 #endif
 #endif
-
+#endif /* LWIP_SOCKET_STDINCLUDE */
 #if LWIP_IPV4
 
 #define inet_addr_from_ip4addr(target_inaddr, source_ipaddr) ((target_inaddr)->s_addr = ip4_addr_get_u32(source_ipaddr))

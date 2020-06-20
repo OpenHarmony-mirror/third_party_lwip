@@ -1041,6 +1041,7 @@ lwip_sock_make_addr(struct netconn *conn, ip_addr_t *fromaddr, u16_t port,
 #endif /* LWIP_IPV4 && LWIP_IPV6 */
 
   IPADDR_PORT_TO_SOCKADDR(&saddr, fromaddr, port);
+  DF_NADDR(*fromaddr);
   if (*fromlen < saddr.sa.sa_len) {
     truncated = 1;
   } else if (*fromlen > saddr.sa.sa_len) {
