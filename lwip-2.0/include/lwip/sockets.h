@@ -2760,7 +2760,7 @@ int lwip_inet_pton(int af, const char *src, void *dst);
 
 
 #endif /* LWIP_COMPAT_SOCKETS */
-void sock_recycle(void);
+void sock_recycle(u32_t current_pid);
 int sock_check(int s);
 #if defined (__cplusplus) && __cplusplus
 }

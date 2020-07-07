@@ -653,10 +653,8 @@ lwip_socket_thread_cleanup(void)
    netconn_thread_cleanup();
 }
 
-void sock_recycle(void)
+void sock_recycle(u32_t current_pid)
 {
-  u32_t current_pid = OsCurrProcessGet()->processID;
-
   for (int i = 0; i < (int)LWIP_CONFIG_NUM_SOCKETS; ++i) {
     if (sockets[i].owner_pid == current_pid) {
       lwip_close(i + LWIP_SOCKET_OFFSET);
