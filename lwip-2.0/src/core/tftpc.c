@@ -545,7 +545,7 @@ u32_t lwip_tftp_get_file_by_filename(u32_t ulHostAddr,
   struct sockaddr_in stServerAddr;
   struct stat sb;
   u32_t IsDirExist = 0;
-  s32_t fp = 0;
+  s32_t fp = -1;
 
   /*Validate the parameters*/
   if ((szSrcFileName == NULL) || (szDestDirPath == NULL)) {
@@ -831,6 +831,7 @@ u32_t lwip_tftp_get_file_by_filename(u32_t ulHostAddr,
       fp = open((char*)pszTempDestName, (O_WRONLY | O_CREAT | O_TRUNC), DEFFILEMODE);
       if (fp == TFTP_NULL_INT32) {
         ulErrCode = TFTPC_FILECREATE_ERROR;
+        (void)lwip_close(iSockNum);
         goto err_handler;
       }
       isLocalFileOpened = true;
