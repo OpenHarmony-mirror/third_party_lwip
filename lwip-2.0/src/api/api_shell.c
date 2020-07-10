@@ -3609,6 +3609,10 @@ void udpserver(int argc, const char **argv)
   PRINTK("port:%d\r\n", port);
 
   sockfd = lwip_socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+  if (sockfd == -1) {
+    PRINTK("\ncreate socket fail\n");
+    return;
+  }
 
   (void)memset_s(&seraddr, sizeof(seraddr), 0, sizeof(seraddr));
   (void)memset_s(&cliaddr, sizeof(cliaddr), 0, sizeof(cliaddr));
