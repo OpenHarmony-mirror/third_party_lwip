@@ -1471,9 +1471,9 @@ arp_error:
   return 1;
 }
 
-#ifdef LOSCFG_SHELL
+#ifdef LOSCFG_SHELL_CMD_DEBUG
 SHELLCMD_ENTRY(arp_shellcmd, CMD_TYPE_EX, "arp", 1, (CmdCallBackFunc)lwip_arp);
-#endif /* LOSCFG_SHELL */
+#endif /* LOSCFG_SHELL_CMD_DEBUG */
 
 void ifup_internal(void *arg)
 {
@@ -2557,9 +2557,9 @@ LWIP_STATIC const char* convert_icmpv6_err_to_string(u8_t err_type)
   return "Unknown Error";
 }
 
-#ifdef LOSCFG_SHELL
+#ifdef LOSCFG_SHELL_CMD_DEBUG
 SHELLCMD_ENTRY(ping6_shellcmd, CMD_TYPE_EX, "ping6", XARGS, (CmdCallBackFunc)osShellPing6);
-#endif /* LOSCFG_SHELL */
+#endif /* LOSCFG_SHELL_CMD_DEBUG */
 #endif /* LWIP_IPV6 */
 
 #if  LWIP_SNTP
@@ -2601,9 +2601,9 @@ usage:
   return LOS_NOK;
 }
 
-#ifdef LOSCFG_SHELL
+#ifdef LOSCFG_SHELL_CMD_DEBUG
 SHELLCMD_ENTRY(ntpdate_shellcmd, CMD_TYPE_EX, "ntpdate", XARGS, (CmdCallBackFunc)osShellNtpdate);
-#endif /* LOSCFG_SHELL */
+#endif /* LOSCFG_SHELL_CMD_DEBUG */
 
 #endif /* LWIP_SNTP*/
 
@@ -2718,9 +2718,9 @@ usage:
   PRINTK("tftp <-g/-p> -l FullPathLocalFile -r RemoteFile Host\n");
   return LOS_NOK;
 }
-#ifdef LOSCFG_SHELL
+#ifdef LOSCFG_SHELL_CMD_DEBUG
 SHELLCMD_ENTRY(tftp_shellcmd, CMD_TYPE_EX, "tftp", XARGS, (CmdCallBackFunc)osShellTftp);
-#endif /* LOSCFG_SHELL */
+#endif /* LOSCFG_SHELL_CMD_DEBUG */
 #endif /* LOSCFG_NET_LWIP_SACK_TFTP */
 
 
@@ -2789,9 +2789,9 @@ usage:
     return LOS_NOK;
 }
 
-#ifdef LOSCFG_SHELL
+#ifdef LOSCFG_SHELL_CMD_DEBUG
 SHELLCMD_ENTRY(dns_shellcmd, CMD_TYPE_EX, "dns", XARGS, (CmdCallBackFunc)osShellDns);
-#endif /* LOSCFG_SHELL */
+#endif /* LOSCFG_SHELL_CMD_DEBUG */
 #endif /* LWIP_DNS */
 #if LWIP_IPV6
 extern struct nd6_neighbor_cache_entry neighbor_cache[LWIP_ND6_NUM_NEIGHBORS];
@@ -3575,9 +3575,9 @@ u32_t osTcpserver(int argc, const char **argv)
   return LOS_NOK;            // Hits Only If Accept Fails
 }
 
-#ifdef LOSCFG_SHELL
+#ifdef LOSCFG_SHELL_CMD_DEBUG
 SHELLCMD_ENTRY(tcpserver_shellcmd, CMD_TYPE_EX, "tcpserver", XARGS, (CmdCallBackFunc)osTcpserver);
-#endif /* LOSCFG_SHELL */
+#endif /* LOSCFG_SHELL_CMD_DEBUG */
 #endif /* LWIP_DEBUG_TCPSERVER */
 
 #ifdef LWIP_DEBUG_UDPSERVER
@@ -3650,9 +3650,9 @@ void udpserver(int argc, const char **argv)
   return;
 }
 
-#ifdef LOSCFG_SHELL
+#ifdef LOSCFG_SHELL_CMD_DEBUG
 SHELLCMD_ENTRY(udpserver_shellcmd, CMD_TYPE_EX, "udpserver", XARGS, (CmdCallBackFunc)udpserver);
-#endif /* LOSCFG_SHELL */
+#endif /* LOSCFG_SHELL_CMD_DEBUG */
 #endif /* LWIP_DEBUG_UDPSERVER */
 
 #ifdef LWIP_DEBUG_INFO
@@ -3771,9 +3771,9 @@ usage_sock:
 }
 #endif /* LWIP_DEBUG_INFO */
 
-#if defined(LOSCFG_SHELL) && defined(LWIP_DEBUG_INFO)
+#if defined(LOSCFG_SHELL_CMD_DEBUG) && defined(LWIP_DEBUG_INFO)
 SHELLCMD_ENTRY(netdebug_shellcmd, CMD_TYPE_EX, "netdebug", XARGS, (CmdCallBackFunc)osShellNetDebug);
-#endif /* LOSCFG_SHELL && LWIP_DEBUG_INFO */
+#endif /* LOSCFG_SHELL_CMD_DEBUG && LWIP_DEBUG_INFO */
 
 u32_t osShellIpDebug(int argc, const char **argv)
 {
@@ -3897,7 +3897,7 @@ exit:
   return LOS_OK;
 }
 
-#ifdef LOSCFG_SHELL
+#ifdef LOSCFG_SHELL_CMD_DEBUG
 SHELLCMD_ENTRY(ipdebug_shellcmd, CMD_TYPE_EX, "ipdebug", XARGS, (CmdCallBackFunc)osShellIpDebug);
 #endif
 #ifdef LWIP_TESTBED
@@ -3908,9 +3908,9 @@ void osShellReboot(int argc, const char **argv)
   cmd_reset();
 }
 
-#ifdef LOSCFG_SHELL
+#ifdef LOSCFG_SHELL_CMD_DEBUG
 SHELLCMD_ENTRY(reboot_shellcmd, CMD_TYPE_EX, "reboot", XARGS, (CmdCallBackFunc)osShellReboot);
-#endif /* LOSCFG_SHELL */
+#endif /* LOSCFG_SHELL_CMD_DEBUG */
 #endif
 
 #endif //LWIP_ENABLE_LOS_SHELL_CMD
