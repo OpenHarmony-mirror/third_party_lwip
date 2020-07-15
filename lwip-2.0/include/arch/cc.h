@@ -54,7 +54,7 @@ extern "C" {
 
 #define LWIP_TIMEVAL_PRIVATE 0
 #define LWIP_NO_INTTYPES_H 1
-
+#define LWIP_COMPAT_MUTEX 0
 
 /* Define (sn)printf formatters for these lwIP types */
 #define X8_F  "02x"
