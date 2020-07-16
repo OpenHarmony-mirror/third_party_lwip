@@ -2525,7 +2525,7 @@ void process_forward_dns(struct pbuf *p, u8_t entry_idx, struct dns_table_entry 
   u16_t res_idx;
   u16_t ret;
   u16_t nquestions, nanswers;
-  ip_addr_t dns_server_addr;
+  ip_addr_t dns_server_addr = {0};
 
   entry->ipaddr_count = 0;
 
@@ -2742,7 +2742,7 @@ void process_reverse_dns(struct pbuf *p, u8_t entry_idx, struct reverse_dns_tabl
 {
   struct dns_answer ans = {0};
   struct dns_query qry = {0};
-  ip_addr_t dns_server_addr;
+  ip_addr_t dns_server_addr = {0};
   u16_t res_idx;
   u16_t ret;
   u16_t nquestions, nanswers;
