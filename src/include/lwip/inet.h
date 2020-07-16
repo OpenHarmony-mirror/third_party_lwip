@@ -129,7 +129,7 @@ extern const struct in6_addr in6addr_any;
 #define INET6_ADDRSTRLEN    IP6ADDR_STRLEN_MAX
 #endif
 #endif
-#endif /* LWIP_SOCKET_STDINCLUDE */
+
 #if LWIP_IPV4
 
 #define inet_addr_from_ip4addr(target_inaddr, source_ipaddr) ((target_inaddr)->s_addr = ip4_addr_get_u32(source_ipaddr))
@@ -160,7 +160,7 @@ extern const struct in6_addr in6addr_any;
 #define inet6_ntoa_r(addr, buf, buflen) ip6addr_ntoa_r((const ip6_addr_t*)&(addr), buf, buflen)
 
 #endif /* LWIP_IPV6 */
-
+#endif /* LWIP_SOCKET_STDINCLUDE */
 
 #ifdef __cplusplus
 }

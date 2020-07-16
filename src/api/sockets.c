@@ -529,6 +529,7 @@ alloc_socket(struct netconn *newconn, int accepted)
        * (unless it has been created by accept()). */
       sockets[i].sendevent  = (NETCONNTYPE_GROUP(newconn->type) == NETCONN_TCP ? (accepted != 0) : 1);
       sockets[i].errevent   = 0;
+      init_waitqueue_head(&sockets[i].wq);
 #endif /* LWIP_SOCKET_SELECT || LWIP_SOCKET_POLL */
       return i + LWIP_SOCKET_OFFSET;
     }
@@ -2558,6 +2559,7 @@ event_callback(struct netconn *conn, enum netconn_evt evt, u16_t len)
   } else {
     SYS_ARCH_UNPROTECT(lev);
   }
+  poll_check_waiters(s, check_waiters);
   done_socket(sock);
 }
 
