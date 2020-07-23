@@ -1071,11 +1071,11 @@ lwip_recv_tcp_from(struct lwip_sock *sock, struct sockaddr *from, socklen_t *fro
     /* get remote addr/port from tcp_pcb */
     u16_t port;
     ip_addr_t tmpaddr;
-    netconn_getaddr(sock->conn, &tmpaddr, &port, 0);
+    err_t err = netconn_getaddr(sock->conn, &tmpaddr, &port, 0);
     LWIP_DEBUGF(SOCKETS_DEBUG, ("%s(%d):  addr=", dbg_fn, dbg_s));
     ip_addr_debug_print_val(SOCKETS_DEBUG, tmpaddr);
     LWIP_DEBUGF(SOCKETS_DEBUG, (" port=%"U16_F" len=%d\n", port, (int)dbg_ret));
-    if (from && fromlen) {
+    if (!err && from && fromlen) {
       return lwip_sock_make_addr(sock->conn, &tmpaddr, port, from, fromlen);
     }
   }
