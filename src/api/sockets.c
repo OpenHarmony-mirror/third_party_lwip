@@ -3822,6 +3822,7 @@ lwip_ioctl(int s, long cmd, void *argp)
       return 0;
 
     default:
+      IOCTL_CMD_CASE_HANDLER();
       break;
   } /* switch (cmd) */
   LWIP_DEBUGF(SOCKETS_DEBUG, ("lwip_ioctl(%d, UNIMPL: 0x%lx, %p)\n", s, cmd, argp));
